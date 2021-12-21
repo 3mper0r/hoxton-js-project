@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: sans-serif;
+}
+
+body {
+    background-image: url('./desk.jpg');
+
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    /* filter: opacity(0.5) */
+}
+
+button {
+
+
+    background-color: chartreuse;
+}
+
+.addModal {
+    display: grid;
+    width: 30rem;
+    height: 8rem;
+    place-content: center;
+}
