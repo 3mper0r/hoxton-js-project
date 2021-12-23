@@ -82,7 +82,7 @@ input {
 
 .note-li {
     display: grid;
-    grid-template-columns: 200px 600px;
+    grid-template-columns: 200px 600px 100px;
 
 }
 
@@ -127,4 +127,18 @@ input, #title::placeholder {
     color: black;
     font-weight: bolder;
     font-size: 1rem;
+}
+
+input:focus {
+    outline: 1px solid gold;
+}
+
+#delete-button {
+    width: min-content;
+    height: min-content;
+    background-color: none;
+    color: white;
+    background-color: red;
+    font-weight: bolder;
+    align-self: center;
 }

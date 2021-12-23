@@ -35,8 +35,19 @@ function renderNotes() {
         const noteSpan = document.createElement('span')
         noteSpan.setAttribute('id', 'user-note')
         noteSpan.textContent = newnote.note
+
+        const deleteButton = document.createElement('button')
+        deleteButton.setAttribute('id', 'delete-button')
+        deleteButton.textContent = 'X'
+        deleteButton.addEventListener('click', () => {
+            const updateNotebook = state.savedNotes.filter(item => item.title !== newnote.title)
+            state.savedNotes = updateNotebook
+
+            render()
+        })
+
         //append spans inside li
-        liEl.append(titleSpan, noteSpan)
+        liEl.append(titleSpan, noteSpan, deleteButton)
         //append li itself inside ul
         noteTable.append(liEl)
     }
@@ -129,24 +140,12 @@ function renderModal() {
 
 }
 
-function deleteNote() {
-
-
-    const deleteButton = document.createElement('button')
-    deleteButton.setAttribute('id', 'delete-buton')
-    deleteButton.textContent = 'remove'
-
-    render()
-}
-}
 
 function render() {
     document.body.innerHTML = ""
     renderAddNote()
     renderModal()
     renderNotes()
-    deleteNote()
-
 
 }
 
