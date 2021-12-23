@@ -1,31 +1,11 @@
 const state = {
     modal: '',
     savedNotes: [
-        {
-            title: 'learn js',
-            note: 'learn js more'
-        },
-        {
-            title: 'celebrate',
-            note: 'train'
-        },
-        {
-            title: 'learn react',
-            note: 'practice'
-        },
-        {
-            title: 'learn react mroee',
-            note: 'practice-moreee'
-        },
-        {
-            title: 'learn react mroee',
-            note: 'practice-moreee'
-        }
+
     ]
 }
 
 function renderNotes() {
-
 
     const noteTable = document.createElement('ul')
     noteTable.setAttribute('class', 'note-table')
@@ -50,16 +30,16 @@ function renderNotes() {
         liEl.setAttribute('class', 'note-li')
         //create two spans -> newnote.title & newnote.note
         const titleSpan = document.createElement('span')
+        titleSpan.setAttribute('id', 'user-title')
         titleSpan.textContent = newnote.title
         const noteSpan = document.createElement('span')
+        noteSpan.setAttribute('id', 'user-note')
         noteSpan.textContent = newnote.note
         //append spans inside li
         liEl.append(titleSpan, noteSpan)
         //append li itself inside ul
         noteTable.append(liEl)
     }
-
-
 
     document.body.append(noteTable)
 }
@@ -101,11 +81,11 @@ function renderModal() {
     formNote.addEventListener('submit', function (e) {
         e.preventDefault()
 
-
         //create a new note object with user;s input
         const usersNote = {
             title: inputTitle.value,
-            note: inputNote.value
+            note: inputNote.value,
+
         }
         // adding stuff to an array -> savedNotes.push
         state.savedNotes.push(usersNote)
@@ -134,6 +114,7 @@ function renderModal() {
     inputSubmit.setAttribute('id', 'submit')
 
     const cancelButton = document.createElement('button')
+    cancelButton.setAttribute('id', 'cancel')
     cancelButton.textContent = 'Cancel'
     cancelButton.addEventListener('click', function () {
         state.modal = ''
@@ -148,11 +129,23 @@ function renderModal() {
 
 }
 
+function deleteNote() {
+
+
+    const deleteButton = document.createElement('button')
+    deleteButton.setAttribute('id', 'delete-buton')
+    deleteButton.textContent = 'remove'
+
+    render()
+}
+}
+
 function render() {
     document.body.innerHTML = ""
     renderAddNote()
     renderModal()
     renderNotes()
+    deleteNote()
 
 
 }
